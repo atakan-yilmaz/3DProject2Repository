@@ -18,7 +18,7 @@ namespace secondProject.Movements
         {
             if (_rigidbody.velocity.y != 0) return;
 
-            Debug.Log(_rigidbody.velocity.y);
+            //Debug.Log(_rigidbody.velocity.y);
 
 
                 _rigidbody.velocity = Vector3.zero;

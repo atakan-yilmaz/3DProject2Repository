@@ -20,7 +20,6 @@ namespace secondProject.Movements
             if (horizontal == 0f) return;
 
             _playerController.transform.Translate(Vector3.right * horizontal * Time.deltaTime * moveSpeed);
-            
         }
     }
 }
