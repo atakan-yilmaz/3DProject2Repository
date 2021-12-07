@@ -23,7 +23,7 @@ namespace secondProject.Controllers
         bool _isJump;
 
         public float MoveSpeed => _moveSpeed;
-        public float MoveBoundary => _moveBoundary;
+        public float MoveBoundary => _moveBoundary; 
 
         private void Awake()
         {

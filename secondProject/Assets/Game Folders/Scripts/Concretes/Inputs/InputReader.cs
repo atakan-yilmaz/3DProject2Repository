@@ -23,7 +23,6 @@ namespace secondProject.Inputs
 
             _playerInput.currentActionMap.actions[1].started += OnJump;
             _playerInput.currentActionMap.actions[1].canceled += OnJump;
-
         }
 
         void OnJump(InputAction.CallbackContext context)
