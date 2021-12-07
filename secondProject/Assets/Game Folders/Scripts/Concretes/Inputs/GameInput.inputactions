@@ -12,6 +12,14 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "PassThrough",
+                    "id": "eaa61b16-44a1-4897-81e1-c35c3983f0fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.01,pressPoint=1)"
                 }
             ],
             "bindings": [
@@ -47,6 +55,17 @@
                     "action": "HorizontalMove",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d0350b4c-5e89-4d7b-aabb-6810a969f1e4",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap(duration=0.01,pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

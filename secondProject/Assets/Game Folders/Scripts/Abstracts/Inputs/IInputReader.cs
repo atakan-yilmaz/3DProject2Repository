@@ -7,7 +7,9 @@ namespace secondProject.Abstracts.Inputs
 {
     public interface IInputReader
     {
-        float  Horizontal { get; }
+        float Horizontal { get; }
+
+        bool IsJump { get; }
     }
 }
 
