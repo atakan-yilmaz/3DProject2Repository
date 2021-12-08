@@ -15,7 +15,6 @@ namespace secondProject.Controllers
         [SerializeField] float _jumpForce = 1300f;
         [SerializeField] float _moveBoundary = 4.5f;
        
-
         HorizontalMover _horizontalMover;
         JumpWithRigidbody _jump;
         IInputReader _input;
@@ -24,7 +23,6 @@ namespace secondProject.Controllers
 
         public float MoveSpeed => _moveSpeed;
         public float MoveBoundary => _moveBoundary; 
-
         private void Awake()
         {
             _horizontalMover = new HorizontalMover(this);
@@ -41,7 +39,6 @@ namespace secondProject.Controllers
                 _isJump = true;
             }
         }
-
         private void FixedUpdate()
         {
             _horizontalMover.TickFixed(_horizontal);
