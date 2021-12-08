@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using secondProject.Inputs;
 using secondProject.Movements;
 using secondProject.Abstracts.Inputs;
-
+using secondProject.Managers;
 
 namespace secondProject.Controllers
 {
@@ -20,6 +20,7 @@ namespace secondProject.Controllers
         IInputReader _input;
         float _horizontal;
         bool _isJump;
+        bool _isDead = false;
 
         public float MoveSpeed => _moveSpeed;
         public float MoveBoundary => _moveBoundary; 
@@ -38,6 +39,8 @@ namespace secondProject.Controllers
             {
                 _isJump = true;
             }
+
+            if (_isDead) return;    
         }
         private void FixedUpdate()
         {
@@ -49,6 +52,17 @@ namespace secondProject.Controllers
             }
 
             _isJump = false;
+        }
+
+        void OnCollisionEnter(Collision other)
+        {
+            EnemyController enemyController = other.collider.GetComponent<EnemyController>();
+
+            if (enemyController != null)
+            {
+                _isDead = true;
+                GameManager.Instance.StopGame();
+            }
         }
     }
 }
