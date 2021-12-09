@@ -16,5 +16,16 @@ namespace secondProject.Managers
         {
             Time.timeScale = 0f;
         }
+
+        public void LoadScene()
+        {
+            Debug.Log("Load Scene Clicked");
+        }
+
+        public void ExitGame()
+        {
+            Debug.Log("Exit on Clicked");
+            Application.Quit();
+        }
     }
 }
