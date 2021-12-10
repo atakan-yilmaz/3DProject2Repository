@@ -5,16 +5,16 @@ using secondProject.Managers;
 
 namespace secondProject.Uis
 {
-    public class MenuPanel : MonoBehaviour
+    public class GameOverPanel : MonoBehaviour
     {
-       public void RedRunButton()
+        public void YesButton()
         {
             GameManager.Instance.LoadScene("Game");
         }
 
-        public void GreenRunButton()
+        public void NoButton()
         {
-            GameManager.Instance.ExitGame();
+            GameManager.Instance.LoadScene("Menu");
         }
     }
 }

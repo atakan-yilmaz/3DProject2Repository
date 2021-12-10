@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Abstracts.Utilities;
+using UnityEngine.SceneManagement;
+
 
 namespace secondProject.Managers
 {
@@ -17,9 +19,15 @@ namespace secondProject.Managers
             Time.timeScale = 0f;
         }
 
-        public void LoadScene()
+        public void LoadScene(string sceneName)
         {
-            Debug.Log("Load Scene Clicked");
+            StartCoroutine(LoadSceneAsync(sceneName));
+        }
+
+        private IEnumerator LoadSceneAsync(string sceneName) //coroutine 
+        {
+            Time.timeScale = 1f;
+            yield return SceneManager.LoadSceneAsync(sceneName);
         }
 
         public void ExitGame()

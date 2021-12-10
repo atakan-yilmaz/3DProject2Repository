@@ -17,9 +17,9 @@
                     "name": "Jump",
                     "type": "PassThrough",
                     "id": "eaa61b16-44a1-4897-81e1-c35c3983f0fe",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": "Tap(duration=0.01,pressPoint=1)"
+                    "interactions": "Tap(duration=0.05,pressPoint=0.1)"
                 }
             ],
             "bindings": [
