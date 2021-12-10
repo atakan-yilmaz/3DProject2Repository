@@ -9,6 +9,7 @@ namespace secondProject.Managers
 {
     public class GameManager : SingletonMonoBehaviorObject<GameManager>
     {
+        public event System.Action OnGameStop;
         private void Awake()
         {
             SingletonThisObject(this);
@@ -16,7 +17,8 @@ namespace secondProject.Managers
 
         public void StopGame()
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0f; 
+            OnGameStop?.Invoke();
         }
 
         public void LoadScene(string sceneName)
