@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Movements;
-
+using secondProject.Managers;
 
 namespace secondProject.Controllers
 {
@@ -39,7 +39,7 @@ namespace secondProject.Controllers
 
         void KillYourself()
         {
-            Destroy(this.gameObject);
+            EnemyManager.Instance.SetPool(this);
         }
     }
 }

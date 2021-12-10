@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using secondProject.Managers;
 
 namespace secondProject.Controllers
 {
     public class SpawnerController : MonoBehaviour
     {
-
-        [SerializeField] EnemyController _enemyPrefab;
         [Range (0.1f, 5f)][SerializeField] float _min = 0.1f;
         [Range(6f, 10f)][SerializeField] float _max = 10f;
         [SerializeField] float _maxSpawnTime;
@@ -33,8 +31,10 @@ namespace secondProject.Controllers
 
         void Spawn() //dusman spawnlamasi icin 
         {
-            EnemyController newEnemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
+            EnemyController newEnemy = EnemyManager.Instance.GetPool();
             newEnemy.transform.parent = this.transform;
+            newEnemy.transform.position = this.transform.position;
+            newEnemy.gameObject.SetActive(true);
 
             GetRandomMaxTime();
             _currentSpawnTime = 0f;
