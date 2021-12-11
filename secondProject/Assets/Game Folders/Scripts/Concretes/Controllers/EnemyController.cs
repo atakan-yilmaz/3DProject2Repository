@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Movements;
 using secondProject.Managers;
+using secondProject.Abstracts.Controllers;
 
 namespace secondProject.Controllers
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, IEntityController
     {
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _maxLifeTime = 5f;

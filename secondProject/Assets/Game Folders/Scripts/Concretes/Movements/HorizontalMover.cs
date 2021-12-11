@@ -2,24 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Controllers;
+using secondProject.Abstracts.Controllers;
+using secondProject.Abstracts.Movements;
 
 
 namespace secondProject.Movements
 {
-    public class HorizontalMover
+    public class HorizontalMover : IMover
     {
-        PlayerController _playerController;
+        IEntityController _playerController;
         float _moveSpeed;
         float _moveBoundary;
 
-        public HorizontalMover(PlayerController playerController)
+        public HorizontalMover(IEntityController entityController)
         {
-            _playerController = playerController;
-            _moveSpeed = _playerController.MoveSpeed;
-            _moveBoundary = _playerController.MoveBoundary;
+            _playerController = entityController;
+            //_moveSpeed = entityController.MoveSpeed;
+            //_moveBoundary = entityController.MoveBoundary;
         }
 
-        public void TickFixed(float horizontal)
+        public void FixedTick(float horizontal)
         {
             if (horizontal == 0f) return;
 

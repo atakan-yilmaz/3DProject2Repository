@@ -1,21 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using secondProject.Abstracts.Controllers;
+using secondProject.Abstracts.Inputs;
+using secondProject.Inputs;
+using secondProject.Managers;
+using secondProject.Movements;
+using secondProject.Abstracts.Movements;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using secondProject.Inputs;
-using secondProject.Movements;
-using secondProject.Abstracts.Inputs;
-using secondProject.Managers;
 
 namespace secondProject.Controllers
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IEntityController
     {
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _jumpForce = 1300f;
         [SerializeField] float _moveBoundary = 4.5f;
        
-        HorizontalMover _horizontalMover;
+        IMover _mover;
         JumpWithRigidbody _jump;
         IInputReader _input;
         float _horizontal;
@@ -26,7 +26,7 @@ namespace secondProject.Controllers
         public float MoveBoundary => _moveBoundary; 
         private void Awake()
         {
-            _horizontalMover = new HorizontalMover(this);
+            _mover = new HorizontalMover(this);
             _jump = new JumpWithRigidbody(this);
             _input = new InputReader(GetComponent<PlayerInput>());
         }
@@ -44,11 +44,11 @@ namespace secondProject.Controllers
         }
         private void FixedUpdate()
         {
-            _horizontalMover.TickFixed(_horizontal);
+            _mover.FixedTick(_horizontal);
 
             if (_isJump)
             {
-                _jump.TickFixed(_jumpForce);
+                _jump.FixedTick(_jumpForce);
             }
 
             _isJump = false;
@@ -56,9 +56,9 @@ namespace secondProject.Controllers
 
         void OnCollisionEnter(Collision other)
         {
-            EnemyController enemyController = other.collider.GetComponent<EnemyController>();
+            IEntityController entityController = other.collider.GetComponent<IEntityController>();
 
-            if (enemyController != null)
+            if (entityController != null)
             {
                 _isDead = true;
                 GameManager.Instance.StopGame();

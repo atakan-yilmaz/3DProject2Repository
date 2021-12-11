@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Controllers;
+using secondProject.Abstracts.Movements;
+using secondProject.Abstracts.Controllers;
+
 
 namespace secondProject.Movements
 {
-    public class VerticalMover 
+    public class VerticalMover : IMover
     {
-        EnemyController _enemyController;
+        IEntityController _entityController;
         float _moveSpeed;
-        public VerticalMover(EnemyController enemyController)
+
+        public VerticalMover(IEntityController entityController)
         {
-            _enemyController = enemyController;
-            _moveSpeed = _enemyController.MoveSpeed;
+            _entityController = entityController;
+            //_moveSpeed = entityController.MoveSpeed;
         }
 
         public void FixedTick(float vertical = 1)
         {
-            _enemyController.transform.Translate(Vector3.back * vertical * _moveSpeed * Time.deltaTime);
+            _entityController.transform.Translate(Vector3.back * vertical * _moveSpeed * Time.deltaTime);
         }
     }
 }

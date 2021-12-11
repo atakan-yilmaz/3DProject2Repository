@@ -27,11 +27,8 @@ namespace  secondProject.Managers
             for (int i = 0; i < 10; i++)
             {
                 EnemyController newEnemy = Instantiate(_enemyPrefab);
-
                 newEnemy.gameObject.SetActive(false);
-
                 newEnemy.transform.parent = this.transform;
-
                 _enemies.Enqueue(newEnemy);
             }
         }
@@ -39,7 +36,6 @@ namespace  secondProject.Managers
         public void SetPool(EnemyController enemyController)
         {
             enemyController.gameObject.SetActive(false);
-
             enemyController.transform.parent = this.transform;
 
             _enemies.Enqueue(enemyController);
