@@ -7,16 +7,13 @@ using secondProject.Abstracts.Controllers;
 
 namespace secondProject.Controllers
 {
-    public class EnemyController : MonoBehaviour, IEntityController
+    public class EnemyController : MyCharacterController, IEntityController
     {
-        [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _maxLifeTime = 5f;
 
         VerticalMover _mover;
 
         float _currentLifeTime = 0f;
-
-        public float MoveSpeed => _moveSpeed;
 
         private void Awake()
         {
@@ -37,7 +34,6 @@ namespace secondProject.Controllers
         {
             _mover.FixedTick();
         }
-
         void KillYourself()
         {
             EnemyManager.Instance.SetPool(this);
