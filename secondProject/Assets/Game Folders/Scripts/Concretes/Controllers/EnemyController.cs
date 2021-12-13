@@ -4,16 +4,20 @@ using UnityEngine;
 using secondProject.Movements;
 using secondProject.Managers;
 using secondProject.Abstracts.Controllers;
+using secondProject.Enums;
 
 namespace secondProject.Controllers
 {
     public class EnemyController : MyCharacterController, IEntityController
     {
         [SerializeField] float _maxLifeTime = 5f;
+        [SerializeField] EnemyEnums _enemyEnum;
 
         VerticalMover _mover;
 
         float _currentLifeTime = 0f;
+
+        public EnemyEnums EnemyType => _enemyEnum;
 
         private void Awake()
         {

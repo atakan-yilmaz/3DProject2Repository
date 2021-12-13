@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using secondProject.Managers;
+using secondProject.Enums;
+
 
 namespace secondProject.Controllers
 {
@@ -31,7 +33,7 @@ namespace secondProject.Controllers
 
         void Spawn() //dusman spawnlamasi icin 
         {
-            EnemyController newEnemy = EnemyManager.Instance.GetPool();
+            EnemyController newEnemy = EnemyManager.Instance.GetPool(enemyType:(EnemyEnums)Random.Range(0, 4));
             newEnemy.transform.parent = this.transform;
             newEnemy.transform.position = this.transform.position;
             newEnemy.gameObject.SetActive(true);
